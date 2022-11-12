@@ -1,9 +1,3 @@
-# ShellScript
+# ChinaHome
 
-常用运维脚本
-
-## 用法
-
-```shell
-bash < (curl -sSL <script-url>)
-```
+中国特色社会主义首页

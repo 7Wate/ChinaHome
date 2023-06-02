@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="Hugo 0.94.2">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your site description">
+
+    <link rel="shortcut icon" href="https://lukasjoswiak.github.io/etch/favicon.ico">
+    <link rel="alternate" type="application/rss+xml" href="https://lukasjoswiak.github.io/etch/index.xml"
+        title="Shell List">
+
+    <link rel="stylesheet" href="sh.css">
+    <style>
+        .command-button {
+            display: none;
+            margin-left: 32px;
+            padding: 3px 6px;
+            border: none;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+        }
+
+        li:hover .command-button {
+            display: inline-block;
+            opacity: 1;
+            transition: opacity 2s ease-in;
+        }
+    </style>
+    
+    <title>Shell List</title>
+</head>
+
+<body>
+    <header id="banner">
+        <h2>7Wate's Shell</h2>
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://blog.7wate.com/" title="posts">blog</a>
+                </li>
+                <li>
+                    <a href="https://git.7wate.org/zhouzhongping/ChinaHome" title="about">git</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main id="content">
+        <p>
+            希望可以帮助您更高效地管理和处理各种任务。
+            <br>
+            接下来尽情享受并加以善用！
+        </p>
+        <h3>Shell List</h3>
+        <ul id="posts">
+            <li>
+                <p>
+                    Linux 脚本集合
+                    <small><time>2023.6.2</time></small>
+                    <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL https://9i5.top/sh/init.sh)', this)">复制</button></small>
+                </p>
+            </li>
+            
+            <li>
+                <p>
+                    Linux 系统信息
+                    <small><time>2023.6.2</time></small>
+                    <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL https://9i5.top/sh/SystemStatus.sh)', this)">复制</button></small>
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    Linux 更换仓库镜像源
+                    <small><time>2023.6.2</time></small>
+                    <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL https://9i5.top/sh/ChangeMirrors.sh)', this)">复制</button></small>
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    Linux 安装 Docker
+                    <small><time>2023.6.2</time></small>
+                    <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL https://9i5.top/sh/DockerInstallation.sh)', this)">复制</button></small>
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    Linux 设置网络代理
+                    <small><time>2023.6.2</time></small>
+                    <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL https://9i5.top/sh/SetPorxy.sh)', this)">复制</button></small>
+                </p>
+            </li>
+            
+            <li>
+                <p>
+                    Linux 设置 SWAP 缓存
+                    <small><time>2023.6.2</time></small>
+                    <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL https://9i5.top/sh/SetSwap.sh)', this)">复制</button></small>
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    Linux 新建用户
+                    <small><time>2023.6.2</time></small>
+                    <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL https://9i5.top/sh/NewUser.sh)', this)">复制</button></small>
+                </p>
+            </li>
+
+        </ul>
+
+    </main>
+    <footer id="footer">
+        Copyright © 2023 7Wate
+    </footer>
+    <script>
+        function copyToClipboard(text, button) {
+          var tempInput = document.createElement('input');
+          tempInput.value = text;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+      
+          // 添加表情提示
+          var emoji = document.createElement('span');
+          emoji.textContent = '🎉'; // 替换为您想要的表情符号
+          button.parentNode.appendChild(emoji);
+      
+          // 移除表情提示
+          setTimeout(function() {
+            button.parentNode.removeChild(emoji);
+          }, 1000); // 2秒后移除表情提示
+        }
+      </script>
+      
+</body>
+
+</html>

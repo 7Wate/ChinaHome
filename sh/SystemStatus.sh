@@ -25,7 +25,7 @@ echo "CPU Load: $(uptime)"
 echo "Top 5 CPU Consuming Processes:"
 echo "-----------------------------------------------------"
 ps -eo pid,ppid,cmd,%cpu --sort=-%cpu | head -n 6
-echo "-------------------------------------"
+echo "-----------------------------------------------------"
 
 # 检查内存使用
 echo "Memory Usage:"

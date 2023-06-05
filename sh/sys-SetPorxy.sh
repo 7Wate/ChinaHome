@@ -9,11 +9,11 @@ if [[ -z $proxy_addr ]]; then
     exit 1
 fi
 
-# 检查代理地址格式是否正确
-if [[ ! $proxy_addr =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$ ]]; then
-    echo "Invalid proxy address format. Please enter in the correct format (e.g., 127.0.0.1:7890). Exiting..."
-    exit 1
-fi
+# 这里我们不做复杂的代理地址格式检查，因为地址可以是IPv4, IPv6或者主机名。
+
+# 删除旧的代理设置
+sed -i '/http_proxy/d' ~/.bashrc
+sed -i '/https_proxy/d' ~/.bashrc
 
 # 设置代理环境变量
 echo "export http_proxy=http://$proxy_addr/" >> ~/.bashrc

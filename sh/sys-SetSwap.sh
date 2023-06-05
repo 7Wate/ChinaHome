@@ -16,7 +16,11 @@ if [[ ! $swap_size =~ ^[0-9]+[G]$ ]]; then
 fi
 
 # Create swap file
-if ! fallocate -l $swap_size /swapfile; then
+if fallocate -l $swap_size /swapfile; then
+  echo "Swap file /swapfile created using fallocate."
+elif dd if=/dev/zero of=/swapfile bs=1M count=$((${swap_size::-1}*1024)); then
+  echo "Swap file /swapfile created using dd."
+else
   echo "Failed to create swap file."
   exit 1
 fi
@@ -25,7 +29,7 @@ fi
 chmod 600 /swapfile
 
 # Format swap file
-if ! mkswap /swapfile; then
+if ! mkswap /swapfile > /dev/null 2>&1; then
   echo "Failed to format the swap file."
   exit 1
 fi
@@ -36,6 +40,9 @@ if ! swapon /swapfile; then
   exit 1
 fi
 
+# Backup fstab file
+cp /etc/fstab /etc/fstab.bak
+
 # Add swap information to /etc/fstab file
 echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 
@@ -44,4 +51,4 @@ if ! grep -q "^/swapfile swap swap defaults 0 0" /etc/fstab; then
   exit 1
 fi
 
-echo "Swap cache successfully set to $swap_size"
+echo "Swap space successfully set to $swap_size"

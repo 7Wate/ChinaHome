@@ -3,10 +3,14 @@
 # 获取系统信息
 HOSTNAME=$(hostname)
 TIME=$(date)
-SYS_VERSION=$(cat /etc/*-release | grep PRETTY_NAME | cut -d '=' -f 2- | tr -d '"')
+if [ -x "$(command -v lsb_release)" ]; then
+    SYS_VERSION=$(lsb_release -d | cut -d ':' -f 2- | sed 's/^\s*//')
+else
+    SYS_VERSION=$(cat /etc/*-release | grep PRETTY_NAME | cut -d '=' -f 2- | tr -d '"')
+fi
 KERNEL_VERSION=$(uname -r)
 UPTIME=$(uptime -p)
-LOAD_AVERAGE=$(cat /proc/loadavg | awk '{print $1, $2, $3}')
+LOAD_AVERAGE=$(uptime | awk -F'[a-z]:' '{ print $2 }')
 DISK_USAGE=$(df -h --total | awk '/total/ {print $3 " used, " $5 " used"}')
 
 # 输出系统信息
@@ -36,7 +40,13 @@ echo "-----------------------------------------------------"
 # 检查网络连接
 echo "Active Network Connections:"
 echo "-----------------------------------------------------"
-netstat -tunlp
+if [ -x "$(command -v netstat)" ]; then
+    netstat -tunlp
+elif [ -x "$(command -v ss)" ]; then
+    ss -tunlp
+else
+    echo "Cannot find command 'netstat' or 'ss' to show network connections."
+fi
 echo "-----------------------------------------------------"
 
 # 用户列表（非系统用户，可远程登录，UID > 1000）

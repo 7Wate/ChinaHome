@@ -31,9 +31,10 @@ echo "0. System Status"
 echo "1. Change Mirrors"
 echo "2. Set Proxy"
 echo "3. Set Swap"
-echo "4. New User"
+echo "4. Set Info"
+echo "5. New User"
 
-read -p "Enter your choice (0-4): " choice
+read -p "Enter your choice (0-5): " choice
 
 # Execute the chosen operation
 case $choice in
@@ -50,6 +51,9 @@ case $choice in
         execute_operation "sys-SetSwap"
         ;;
     4)
+        execute_operation "sys-SetMotd"
+        ;;
+    5)
         execute_operation "sys-NewUser"
         ;;
     *)

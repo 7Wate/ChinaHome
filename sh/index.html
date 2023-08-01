@@ -17,7 +17,7 @@
         .command-button {
             display: none;
             margin-left: 32px;
-            padding: 3px 6px;
+            padding: 2px 7px;
             border: none;
             background-color: #4CAF50;
             color: #fff;
@@ -65,14 +65,6 @@
                     <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL ' + getDomain() + 'sys.sh)', this)">复制</button></small>
                 </p>
             </li>
-
-            <li>
-                <p>
-                    Linux 安装脚本集合
-                    <small><time>2023.6.5</time></small>
-                    <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL ' + getDomain() + 'install.sh)', this)">复制</button></small>
-                </p>
-            </li>
             
             <li>
                 <p>
@@ -103,6 +95,14 @@
                     Linux 设置 SWAP 缓存
                     <small><time>2023.6.2</time></small>
                     <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL ' + getDomain() + 'sys-SetSwap.sh)', this)">复制</button></small>
+                </p>
+            </li>
+            
+            <li>
+                <p>
+                    Linux 设置系统公告
+                    <small><time>2023.8.1</time></small>
+                    <small></small><button class="command-button" onclick="copyToClipboard('bash <(curl -sSL ' + getDomain() + 'sys-SetMotd.sh)', this)">复制</button></small>
                 </p>
             </li>
 
